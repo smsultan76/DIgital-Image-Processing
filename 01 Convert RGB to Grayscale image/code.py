@@ -1,27 +1,25 @@
-import cv2
+
+from PIL.ImageOps import grayscale
+from matplotlib.image import imread
+import matplotlib.pyplot as plt
 import numpy as np
 
-# Load image
-image = cv2.imread('sm_pic.jpg')
+input_image = imread("sm_pic.jpg")
+r, g, b = input_image[:, :, 0], input_image[:, :, 1], input_image[:, :, 2]
+gamma = 1.04
 
-# Check if image loaded correctly
-if image is None:
-    print("Error: Could not load 'sm_pic.jpg'. Check the file path.")
-else:
-    # Convert to RGB (OpenCV loads as BGR by default)
-    image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+r_const, g_const, b_const = 0.2126, 0.7152, 0.0722
 
-    # Convert to grayscale
-    gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+grayscale_image = r_const * r ** gamma + g_const * g ** gamma + b_const * b ** gamma
 
-    # Show images (using local OpenCV windows)
-    cv2.imshow('Original Image', image)
-    cv2.imshow('Grayscale Image', gray_image)
+fig = plt.figure()
+img1, img2 = fig.add_subplot(121), fig.add_subplot(122)
+img1.imshow(input_image)
+img2.imshow(grayscale_image, cmap=plt.cm.get_cmap('gray'))
 
-    # Print matrices
-    print("RGB Image Matrix:\n", image_rgb)
-    print("\nGrayscale Image Matrix:\n", gray_image)
+fig.show()
+plt.show()
 
-    # Required for local display: wait for a key press and then close windows
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+
+# pip install pillow matplotlib numpy
+# pip install -r requirements.txt

@@ -1,8 +1,5 @@
-
-from PIL.ImageOps import grayscale
 from matplotlib.image import imread
 import matplotlib.pyplot as plt
-import numpy as np
 
 input_image = imread("sm_pic.jpg")
 r, g, b = input_image[:, :, 0], input_image[:, :, 1], input_image[:, :, 2]
@@ -19,7 +16,3 @@ img2.imshow(grayscale_image, cmap=plt.cm.get_cmap('gray'))
 
 fig.show()
 plt.show()
-
-
-# pip install pillow matplotlib numpy
-# pip install -r requirements.txt

@@ -1,22 +1,17 @@
-from PIL import Image
-import matplotlib.pyplot as plt
+import cv2
 import numpy as np
+import matplotlib.pyplot as plt
 
-img = Image.open("sm_pic.jpg")
-img_array = np.array(img)
+img = cv2.imread('sm_pic.jpg')
 brightness = 50
-bright_img = np.clip(img_array + brightness, 0, 255)
-bright_img = bright_img.astype(np.uint8)
-
-plt.figure(figsize=(10,5))
-
-plt.subplot(1,2,1)
-plt.imshow(img)
-plt.title("Original Image")
-plt.subplot(1,2,2)
-plt.imshow(bright_img)
-plt.title("Brightness Enhanced Image")
-
-print("Brightness Enhanced Image Matrix:\n")
-print(bright_img)
+bright_img = cv2.convertScaleAbs(img, beta=brightness)
+titles = ['Original Image', 'Brightness Enhanced Image']
+images = [img, bright_img]
+plt.figure(figsize=(10, 5))
+for i in range(2):
+    plt.subplot(1, 2, i + 1)
+    plt.imshow(cv2.cvtColor(images[i], cv2.COLOR_BGR2RGB))
+    plt.title(titles[i])
+    
+plt.tight_layout()
 plt.show()

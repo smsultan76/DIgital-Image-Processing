@@ -1,0 +1,20 @@
+Prepare lab reports according to these attributes:
+Problem No:
+Problem Name:
+Objectives
+Theory
+Program (language: python)
+Result & Discussion
+Analysis
+Opinion (your opinion: what you have done/ your learning through this experiment)
+
+
+
+
+
+Lab 01: Convert RGB to Grayscale image and show image matrix
+Lab 02: Implement the popular image enhancement technique: convert into negative image
+Lab 03: Implement the popular image enhancement technique: Brightness Enhancement
+Lab 04: Implement the popular image enhancement technique: Log transformation & Power Log transformation
+Lab 05: Implement the popular image enhancement technique: Contrast Enhancement
+Lab 06: Implement smoothing linear filter using the mask 3x3, 5x5,7x7,9x9
